@@ -1,0 +1,14 @@
+<div class="row text-center mt-3">
+  <% @letters.each do |letter| %>
+    <div class="col my-auto">
+      <div class="p-3 mb-3 border bg-info shadow-sm"><h2><%= letter %></h2></div>
+    </div>
+  <% end %>
+</div>
+<p>What is the longest word you can find?</p>
+<form class="form-inline" action="/score" method="post" data-turbo="false">
+    <input type="text" class="form-control mb-2 mr-sm-2" name="word" placeholder="">
+    <input type="submit" class="btn btn-primary" value="Play">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+</form>
